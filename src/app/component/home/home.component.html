@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">UNIVERSITé</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink=''>Home
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink='/dashboard'>Dashboard</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <a class="nav-link" routerLink='/register'><button class="btn btn-secondary my-2 my-sm-0" type="submit">Register</button></a>
+        <a class="nav-link" routerLink='/login'><button class="btn btn-secondary my-2 my-sm-0" type="submit">Login</button></a>
+      </form>
+    </div>
+  </nav>
+  <div class="row bg-gradient-primary"  >
+    <div class="col-2"></div>
+    <div class="col-8">
+        <div class="card mb-3" *ngFor="let pro of universiteListe">
+            <div class="card-body">
+                <div class="row">
+                <div class="col-4">
+                    <img src="assets/img/{{pro.image}}" width="200" height="200">
+                </div>
+                <div class="col-8">
+              <h6 class="card-title">{{pro.name}}</h6>
+              <p><b>à propos:</b><small>{{pro.about}}.</small></p>
+              <p class="card-text"><small class="text-muted">Adresse: {{pro.Adresse}} Tel:{{pro.Tel}}</small></p>
+            </div>
+        </div>
+            </div>
+          </div>
+      
+    </div>
+    <div class="col-2"></div>
+  </div>
