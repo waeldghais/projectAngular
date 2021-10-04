@@ -17,8 +17,195 @@
     rel="stylesheet">
 
   <link rel="stylesheet" href="assets/css/sb-admin-2.css">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+  <div id="MyPopup1" class="modal " role="dialog"  >
+    <div class="modal-dialog" >
+        <div class="modal-content ">
+             <div id="contents" role="document">
+             <div id="logo"></div>
+              <a class="close" href="#" role="button" aria-label="Fermer le formulaire de feedback" tabindex="0" onclick="CloseClearModal()">x</a> </a>
+              <!--<h2 id='title'> Give your Feedback</span>          -->
+            </div>
+            <div class="row modal-body ">
+             
+                <div class="choice" id="choice"  tabindex="0" role="button" onclick="ShowModal('MyPopupSp',true)">
+                <img class="card-img-top" src="assets/img/feed1.jpg" alt="Card image cap">
+                    <div class="row card-body">
+                    <h4>Specific Feedback</h4>
+                    <span> i'd like to give Feedback on a specific part </span>  
+                </div>
+                </div>
+              
+              <div class="choice" id="choice"  tabindex="0" role="button" onclick="ShowModal('MyPopupGn',false)">
+                <img class="card-img-top" src="assets/img/feed.jpg" alt="Card image cap" >
+                   <div class="row card-body">
+                   <h6>Generic feedback</h6>
+                   <span >I’d like to give general feedback on the entire website </span>
+                   </div>
+              </div>
+              <div class="  choice choice_custom "  tabindex="0" role="button"  onclick="ShowModal('MyPopupReq',false)" >
+                <img class="card-img-top" src="assets/img/feed2.jpg" alt="Card image cap">
+                   <div class="row card-body">
+                    <h4>Request Demo</h4>
+                    <span>I'd like to get in touch with your sales team</span>
+                   </div>
+              </div>
+                 <a title="Powered by Maison Du wEB" class="powered-by" href="https://www.maisonduweb.com/" target="_blank">Powered by Maison du web</a>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div id="MyPopup" class="modal" role="dialog">
+  
+      <!-- <div class="container d-flex justify-content-center">-->
+        <div class="modal-dialog" >
+          <div class=" modal-content">
+            <div class="d-flex flex-row  p-3 adiv text-white">
+              <span class="pb-3">LUA</span> 
+              <a class="close" href="#" role="button" aria-label="Fermer le formulaire de feedback" tabindex="0" onclick="CloseClearModal()">x</a> </a>
+            </div>
+            <div class="mt-2 p-4 ">
+              <form id="formModal">
+               <h6 class="nat">Please rate your experience on this page.</h6>
+               <br>
+              <div class="rating">
+  
+                <input type="radio" name="star" id="star1"  onclick="textf('angry') ">
+                <label for="star1">
+                  <img class="imgm"src="assets/img/angry.png">
+                </label>
+  
+                <input type="radio" name="star" id="star2" onclick="textf('sad')" >
+                <label for="star2">
+                  <img class="imgm"src="assets/img/sad.png">
+                  
+                </label>
+  
+                <input type="radio" name="star" id="star3" onclick="textf('neutre')" selected>
+                <label for="star3">
+                  <img class="imgm"src="assets/img/happy.png">
+                
+                </label>
+  
+                <input type="radio" name="star" id="star4" onclick="textf('Happy')" >
+                <label for="star4">
+                  <img class="imgm"src="assets/img/smiling-face.png">
+                 
+                </label>
+  
+                <input type="radio" name="star" id="star5" onclick="textf('very happy')" >
+                <label for="star5">
+                  <img class="imgm"src="assets/img/lol.png">
+                  
+                </label>
+              </div>
+  
+             <br>
+                <div class="nfm" id="nfmid">
+                  <h6 class="nat" id="">What is the nature of your feedback? </h6>
+                  <p class="usabilla-error ub-hide" role="alert" aria-describedby="conditional-input"></p>
+                  <select id="dropl" class="natfeed"name="nature_of_feedback" class="text" aria-labelledby="conditional-input" aria-required="true" onclick="textfmess()" style="box-shadow: none; font-size:medium  ;">
+                    <option value="" selected>- Choose a subject -</option>
+                    <option value="compliment" >Leave a compliment</option>
+                    <option value="suggestion" >Make a suggestion </option>
+                    <option value="bug">Report a bug </option>
+                    <option value="Other" >Other </option>
+                  </select>
+                  
+                  <div id="feedmess" style="display: none; " >
+                    <br>
+                    <h6 class="nat" id="sutifed" ></h6>
+                     <br>
+                    <textarea name="feedback" aria-labelledby="comment-input-bug" aria-required="true" id="textst"></textarea>
+                    <br>
+                    <br>
+                    <h6 id="email-input-bug">Please leave us your email if you want to be contacted.</h6>
+                    <br>
+                    <input name="email" type="email" class="text" aria-labelledby="email-input-bug" aria-required="false">
+                    <button class="submit btn btn-outline-success" type="submit" formnovalidate="">Submit</button>
+                    
+  
+                  </div>
+                </div>
+              </div>
+            </div>
+       
+         
+         
+         </div>
+         
+     
+   </div>
+    <!-- Modal request demo -->
+  <div id="request-demo" class="modal " role="dialog"  >
+    <div class="modal-dialog" >
+        <div class="modal-content"  style="padding:20px ;">
+             <div id="contents" role="document">
+             <div id="logo"></div>
+              <a class="close" href="#" role="button" aria-label="Fermer le formulaire de feedback" tabindex="0" onclick="CloseClearModal()" >x</a> </a>
+              <h2 id='title'> Send a Request Demo</span>          
+            </div>
+                      <div class="form-group">
+                      <div class="form-group mt-4 col-8">
+                          <label >Name</label>
+                          <input type="text" class="form-control "  required>
+                        </div>
+                  </div>
+                  <div class="form-group">
+                      <div class="form-group mt-4 col-8">
+                          <label >Email</label>
+                          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" required>
+                        </div>
+                      <div class="form-group mt-4 col-8">
+                          <label >Phone number</label>
+                          <input type="number" class="form-control"  required>
+                        </div>
+                      <div class="form-group mt-4 col-8">
+                          <label >Company</label>
+                          <input type="text" class="form-control"  required>
+                        </div>
+                        <p class="mt-4">Does your company use Salesforce?</p>
+                <div class="row">
+                  <div class="col-3">
+                      <div class="form-check">
+                          <input class="form-check-input " type="radio" name="exampleRadios" id="exampleRadios1" value="option1" >
+                          <label class="form-check-label" for="exampleRadios1">
+                            Yes   
+                          </label>
+                        </div>
+                  </div>
+                  <div class="col-3">
+                      <div class="form-check ">
+                          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" >
+                          <label class="form-check-label" for="exampleRadios1">
+                           No
+                         </label>
+                        </div>
+                  </div>
+                </div>
+                <div class="form-check mt-4">
+                  <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                  <label class="form-check-label" for="exampleRadios1">
+                      I wish to receive information about other SurveyMonkey Business Solutions like product updates, news, information, 
+                      <p> and special promotions. Visit the Privacy Notice for information on how we use your information. You can unsubscribe at any time  </p>   
+                    </label>
+                </div>
+                <div class="mt-4">
+                    <label class="form-check-label" for="exampleRadios1">
+                      By clicking 'Request a demo', I agree to use of my details to contact me about my specific request or inquiry.
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-success mt-4" style="margin-left: 150px;">Request Demo</button>
+        </div>
+    </div>
+    </div>
+  </div>
+  <section id="sections">
+   
+
   <app-root></app-root>
+  <script type="text/javascript" src="assets/js/app.js" charset="utf-8"></script>
 </body>
 </html>
