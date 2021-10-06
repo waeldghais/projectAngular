@@ -6,10 +6,13 @@
  img.setAttribute('src', 'assets/img/surveyfeedback.png');
  img.setAttribute('height', '100px');
  img.setAttribute('width', '40px');
+ img.setAttribute('data-target', '#modelfeed');
+ img.setAttribute('data-toggle', 'modelfeed');
  img.setAttribute('id', 'Feedback');
  document.body.appendChild(img);
+ 
  document.getElementById("Feedback").addEventListener("click", runShowModal);
- document.body.setAttribute("id","usabilla-choice-container");
+
 // specific feedback  show the border
 document.getElementById("sections").addEventListener("mouseover", showborder);
 document.getElementById("sections").addEventListener("mouseout", showborder);
@@ -25,22 +28,21 @@ document.getElementById("sections").addEventListener("mouseout", showborder);
  }
 
  function runShowModal() {
-    ShowModal('MyPopup1',false)
+    ShowModal('modelfeed',false)
   }
 
  //Show modal i  click
  function ShowModal(idModal,varb = false) {
     enable=varb;
-    //document.getElementById("MyPopup1").style.display="none";
+    document.getElementById("modelfeed").style.display="none";
     if(idModal == "MyPopupSp"){
-        console.log('jhzjhazjh');
-        document.getElementById("MyPopup1").style.display="none";
+        document.getElementById("modelfeed").style.display="none";
     }else if (idModal == "MyPopupGn") {
         document.getElementById("MyPopup").style.display="block";
     }else if (idModal == "MyPopupReq"){
         document.getElementById("request-demo").style.display="block";
     }else{
-        document.getElementById("MyPopup1").style.display="block";
+        document.getElementById("modelfeed").style.display="block";
     }
 }
  //close MyPopup Modal with clear data on form
@@ -49,7 +51,7 @@ function CloseClearModal() {
     document.getElementById('feedmess').style.display="none";
     document.getElementById("formModal").reset();
     document.getElementById("MyPopup").style.display='none';
-    document.getElementById("MyPopup1").style.display='none';
+    document.getElementById("modelfeed").style.display='none';
     document.getElementById("request-demo").style.display='none'
 }
 
@@ -89,6 +91,43 @@ else
 
 
 }
+}
+window.onload = () => {
+    // On récupère tous les boutons d'ouverture de modelfeede
+    const modelfeedButtons = document.querySelectorAll("[data-toggle=modelfeed]");
+    
+    for(let button of modelfeedButtons){
+        button.addEventListener("click", function(e){
+            // On empêche la navigation
+            e.preventDefault();
+            // On récupère le data-target
+            let target = this.dataset.target
+            
+            // On récupère la bonne modelfeede
+            let modelfeed = document.querySelector(target);
+            // On affiche la modelfeede
+            modelfeed.classList.add("show");
+
+            // On récupère les boutons de fermeture
+            const modelfeedClose = modelfeed.querySelectorAll("[data-dismiss=dialog]");
+            
+            for(let close of modelfeedClose){
+                close.addEventListener("click", () => {
+                    modelfeed.classList.remove("show");
+                });
+            }
+
+            // On gère la fermeture lors du clic sur la zone grise
+            modelfeed.addEventListener("click", function(){
+                this.classList.remove("show");
+            });
+            // On évite la propagation du clic d'un enfant à son parent
+            modelfeed.children[0].addEventListener("click", function(e){
+                e.stopPropagation();
+            })
+        });
+    }
+
 }
 
 
