@@ -7,8 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 
@@ -21,169 +20,173 @@
   <link rel="stylesheet" href="assets/css/styleModal.css">
 </head>
 <body>
-  <div id="MyPopup" class="modal" role="dialog">
+  <!--model avis-->
+  <div id="modelavis" class="modelavis" role="dialog">
 
-    <!-- <div class="container d-flex justify-content-center">-->
-    <div class="modal-dialog">
-      <div class=" modal-content">
-        <div class="d-flex flex-row  p-3 adiv text-white">
-          <span class="pb-3">LUA</span>
-          <a class="close" href="#" role="button" aria-label="Fermer le formulaire de feedback" tabindex="0"
-            onclick="CloseClearModal()">x</a> </a>
-        </div>
-        <div class="mt-2 p-4 ">
-          <form id="formModal">
-            <h6 class="nat">Please rate your experience on this page.</h6>
-            <br>
-            <div class="rating">
+   
+    <div class=" containeravis">
+      <div class="adiv ">
+        <div style="padding-top:11px;  padding-left: 25px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><b>LUA feedback</b></div>
+        <a class="close" href="#" role="button" aria-label="Fermer le formulaire de feedback" tabindex="0"
+          onclick="CloseClearModal()">&#x2715</a> </a>
+      </div>
+      <div class="mt-2 p-4 ">
+        <form id="formModal">
+          <h6 class="nat">Please rate your experience on this page.</h6>
+          <br>
+          <div class="rating">
 
-              <input type="radio" name="star" id="star1" onclick="textf('angry') ">
-              <label for="star1">
-                <img class="imgm" src="assets/img/angry.png">
-              </label>
+            <input type="radio" name="star" id="star1" onclick="textf('angry') ">
+            <label for="star1">
+              <img class="imgm" src="assets/img/angry.png">
+            </label>
 
-              <input type="radio" name="star" id="star2" onclick="textf('sad')">
-              <label for="star2">
-                <img class="imgm" src="assets/img/sad.png">
+            <input type="radio" name="star" id="star2" onclick="textf('sad')">
+            <label for="star2">
+              <img class="imgm" src="assets/img/sad.png">
 
-              </label>
+            </label>
 
-              <input type="radio" name="star" id="star3" onclick="textf('neutre')" selected>
-              <label for="star3">
-                <img class="imgm" src="assets/img/happy.png">
+            <input type="radio" name="star" id="star3" onclick="textf('neutre')" selected>
+            <label for="star3">
+              <img class="imgm" src="assets/img/happy.png">
 
-              </label>
+            </label>
 
-              <input type="radio" name="star" id="star4" onclick="textf('Happy')">
-              <label for="star4">
-                <img class="imgm" src="assets/img/smiling-face.png">
+            <input type="radio" name="star" id="star4" onclick="textf('Happy')">
+            <label for="star4">
+              <img class="imgm" src="assets/img/smiling-face.png">
 
-              </label>
+            </label>
 
-              <input type="radio" name="star" id="star5" onclick="textf('very happy')">
-              <label for="star5">
-                <img class="imgm" src="assets/img/lol.png">
+            <input type="radio" name="star" id="star5" onclick="textf('very happy')">
+            <label for="star5">
+              <img class="imgm" src="assets/img/lol.png">
 
-              </label>
-            </div>
+            </label>
+          </div>
 
-            <br>
-            <div class="nfm" id="nfmid">
-              <h6 class="nat" id="">What is the nature of your feedback? </h6>
-              <p class="usabilla-error ub-hide" role="alert" aria-describedby="conditional-input"></p>
-              <select id="dropl" class="form-control" name="nature_of_feedback" class="text"
-                aria-labelledby="conditional-input" aria-required="true" onclick="textfmess()"
-                style="box-shadow: none; font-size:medium  ;">
-                <option value="" selected>- Choose a subject -</option>
-                <option value="compliment">Leave a compliment</option>
-                <option value="suggestion">Make a suggestion </option>
-                <option value="bug">Report a bug </option>
-                <option value="Other">Other </option>
-              </select>
+          <br>
+          <div class="nfm" id="nfmid">
+            <h6 class="nat" id="">What is the nature of your feedback? </h6>
+            <p class="usabilla-error ub-hide" role="alert" aria-describedby="conditional-input"></p>
+            <select id="dropl" class="form-control" name="nature_of_feedback" class="text"
+              aria-labelledby="conditional-input" aria-required="true" onclick="textfmess()"
+              style="box-shadow: none; font-size:medium  ;">
+              <option value="" selected>- Choose a subject -</option>
+              <option value="compliment">Leave a compliment</option>
+              <option value="suggestion">Make a suggestion </option>
+              <option value="bug">Report a bug </option>
+              <option value="Other">Other </option>
+            </select>
 
-              <div id="feedmess" style="display: none; ">
-                <br>
-                <h6 class="nat" id="sutifed"></h6>
-                <br>
-                <textarea name="feedback" class="form-control"  aria-labelledby="comment-input-bug" aria-required="true"
-                  id="textst"></textarea>
-                <br>
-                <br>
-                <h6 id="email-input-bug">Please leave us your email if you want to be contacted.</h6>
-                <br>
-                <input name="email" type="email"class="form-control" aria-labelledby="email-input-bug" aria-required="false">
-                <button type="submit" class="btn btn-success mt-4" style="margin-left: 380px">Submit</button>
-
-
+            <div id="feedmess" style="display: none; ">
+              <br>
+              <h6 class="nat" id="sutifed"></h6>
+              <br>
+              <textarea name="feedback" class="form-control"  aria-labelledby="comment-input-bug" placeholder="You can express here" aria-required="true"
+                id="textst"></textarea>
+              <br>
+              <br>
+              <h6 id="email-input-bug">Please leave us your email if you want to be contacted.</h6>
+              <br>
+              <input name="email" type="email"class="form-control" placeholder="Your email please" aria-labelledby="email-input-bug" aria-required="false">
+              <div class="modelavis-footer">
+                <button type="submit" class="btna" >Submit</button>
+              
+              <div class="modelavis-footerleft">
+                <a style="left: 20px;">Powered by Maisonduweb</a>
               </div>
             </div>
-        </div>
+
+            </div>
+          </div>
+          </form>
       </div>
-
-
-
     </div>
 
-
-  </div>
-
- 
- <!-- Modal request demo -->
- <div id="request-demo" class="modal " role="dialog"  >
-  <div class="modal-dialog" >
-      <div class="modal-content"  style="padding:20px ;">
-           <div id="contents" role="document">
-           <div id="logo"></div>
-            <a class="close" href="#" role="button" aria-label="Fermer le formulaire de feedback" tabindex="0" onclick="CloseClearModal()" >x</a> </a>
-            <h2 id='title'>GET IN TOUCH</span>          
-          </div>
-                    <div class="form-group">
-                    <div class="form-group mt-4 ">
-                        <label >Name</label>
-                        <input type="text" class="form-control "  required>
-                      </div>
-                </div>
-                <div class="form-group">
-                    <div class="form-group mt-4 ">
-                        <label >Email</label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" required>
-                      </div>
-                    <div class="form-group mt-4 ">
-                        <label >Phone number</label>
-                        <input type="number" class="form-control"  required>
-                      </div>
-                    <div class="form-group mt-4">
-                        <label >Message</label>
-                        <textarea class="form-control" rows="5" cols="33"  required></textarea>
-                      </div>
-              
-              <button type="submit" class="btn btn-success mt-4" style="margin-left: 155px;">Request Demo</button>
-      </div>
-  </div>
-  </div>
 </div>
 
-    <!-- modelfeede -->
-  <div class="modelfeed" id="modelfeed" role="dialog">
-      <div class="containerm">
-              <div class="modelfeed-close" data-dismiss="dialog">&#x2715</div>
-              <div class="modelfeed-header">
-                <b>LUA feedback</b>
+
+<!-- Modal request demo -->
+<div id="request-demo" class="modal " role="dialog"  >
+<div class="modal-dialog" >
+    <div class="modal-content"  style="padding:20px ;">
+         <div id="contents" role="document">
+         <div id="logo"></div>
+          <a class="close" href="#" role="button" aria-label="Fermer le formulaire de feedback" tabindex="0" onclick="CloseClearModal()" >x</a> </a>
+          <h2 id='title'>GET IN TOUCH</span>          
+        </div>
+                  <div class="form-group">
+                  <div class="form-group mt-4 ">
+                      <label >Name</label>
+                      <input type="text" class="form-control "  required>
+                    </div>
               </div>
-              
-              <div class="modelfeed-body">
+              <div class="form-group">
+                  <div class="form-group mt-4 ">
+                      <label >Email</label>
+                      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" required>
+                    </div>
+                  <div class="form-group mt-4 ">
+                      <label >Phone number</label>
+                      <input type="number" class="form-control"  required>
+                    </div>
+                  <div class="form-group mt-4">
+                      <label >Message</label>
+                      <textarea class="form-control" rows="5" cols="33"  required></textarea>
+                    </div>
+            
+            <button type="submit" class="btn btn-success mt-4" style="margin-left: 155px;">Request Demo</button>
+            
+          </div>
+</div>
+</div>
+</div>
 
-                  <div class="box"  onclick="ShowModal('MyPopupSp',true)">
-                      <img src="assets/img/webspecific.svg" class="imgb">
-                      <div class="content">
-                          <h3>Specific feedback</h3>
-                          <p class="txtf">I'd like to give feedback on a specific part of this page.</p>
-                      </div>
-                  </div>
-                  <div class="box" onclick="ShowModal('MyPopupGn',false)">
-                      <img src="assets/img/webgeneric.svg" class="imgb">
-                      <div class="content">
-                          <h3>Generic feedback</h3>
-                          <p class="txtf">I'd like to give generic feedback on the entire website.</p>
-                      </div>
-                  </div>
-                  <div class="box"  onclick="ShowModal('MyPopupReq',false)">
-                      <img src="assets/img/webmemo.svg" class="imgb">
-                      <div class="content">
-                          <h3>Request demo</h3>
-                          <p class="txtf">I'd like to get in touch with your sales team</p>
-                      </div>
-                  </div>
+<!-- modelfeede -->
+<div class="modelfeed" id="modelfeed" role="dialog">
+    <div class="containerm">
+            <div class="close" data-dismiss="dialog">&#x2715</div>
+            <div class="modelfeed-header">
+              <b style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">LUA feedback</b>
+            </div>
+            
+            <div class="modelfeed-body">
 
-              </div>
+                <div class="box"  onclick="ShowModal('MyPopupSp',true)" >
+                    <img src="assets/img/webspecific.svg" class="imgb">
+                    <div class="content">
+                        <h3>Specific feedback</h3>
+                        <p class="txtf">I'd like to give feedback on a specific part of this page.</p>
+                    </div>
+                </div>
+                <div class="box" onclick="ShowModal('MyPopupGn',false)" data-target="#modelavis" data-toggle="modelavis">
+                    <img src="assets/img/webgeneric.svg" class="imgb">
+                    <div class="content">
+                        <h3>Generic feedback</h3>
+                        <p class="txtf">I'd like to give generic feedback on the entire website.</p>
+                    </div>
+                </div>
+                <div class="box"  onclick="ShowModal('MyPopupReq',false)">
+                    <img src="assets/img/webmemo.svg" class="imgb">
+                    <div class="content">
+                        <h3>Request demo</h3>
+                        <p class="txtf">I'd like to get in touch with your sales team</p>
+                    </div>
+                </div>
 
-              <div class="modelfeed-footerleft">
-                 <a style="left: 20px;">Powered by Maisonduweb</a>
-              </div>
+            </div>
 
-      </div>
-  </div>
-  <!--model avis-->
+            <div class="modelfeed-footerleft">
+               <a style="left: 20px;">Powered by Maisonduweb</a>
+            </div>
+
+    </div>
+</div>
+
+
+<!--new request-->
   <section id="sections">
    
 

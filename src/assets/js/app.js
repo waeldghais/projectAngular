@@ -1,108 +1,111 @@
 
- // on clic show modal 
- var enable = false;
- //create btn Feedback 
- var img = document.createElement('img');
- img.setAttribute('src', 'assets/img/surveyfeedback.png');
- img.setAttribute('height', '100px');
- img.setAttribute('width', '40px');
- img.setAttribute('data-target', '#modelfeed');
- img.setAttribute('data-toggle', 'modelfeed');
- img.setAttribute('id', 'Feedback');
- document.body.appendChild(img);
- 
- document.getElementById("Feedback").addEventListener("click", runShowModal);
+// on clic show modal 
+var enable = false;
+//create btn Feedback 
+var img = document.createElement('img');
+img.setAttribute('src', 'assets/img/surveyfeedback.png');
+img.setAttribute('height', '100px');
+img.setAttribute('width', '40px');
+img.setAttribute('data-target', '#modelfeed');
+img.setAttribute('data-toggle', 'modelfeed');
+img.setAttribute('id', 'Feedback');
+document.body.appendChild(img);
+
+document.getElementById("Feedback").addEventListener("click", runShowModal);
 
 // specific feedback  show the border
 document.getElementById("sections").addEventListener("mouseover", showborder);
 document.getElementById("sections").addEventListener("mouseout", showborder);
- function showborder(){
-     if(enable){
-         TagName=event.target;
-         TagName.removeAttribute("href");
-         TagName.classList.toggle("mystyle");
-         TagName.onclick =function () {
-             document.getElementById("MyPopup").style.display="block";    
-         };
-     }
- }
+function showborder() {
+    if (enable) {
+        TagName = event.target;
+        TagName.removeAttribute("href");
+        TagName.classList.toggle("mystyle");
+        TagName.addEventListener('click', function (e) {
+            console.log(TagName);
+            document.getElementById("modelavis").style.display = "block";
+            var xb = document.querySelector(".box");
+            xb.setAttribute('data-target', '#modelavis');
+            xb.setAttribute('data-toggle', 'modelavis');
+            var modelavis = document.getElementById("modelavis");
+            modelavis.classList.add("show");
 
- function runShowModal() {
-    ShowModal('modelfeed',false)
-  }
-
- //Show modal i  click
- function ShowModal(idModal,varb = false) {
-    enable=varb;
-    document.getElementById("modelfeed").style.display="none";
-    if(idModal == "MyPopupSp"){
-        document.getElementById("modelfeed").style.display="none";
-    }else if (idModal == "MyPopupGn") {
-        document.getElementById("MyPopup").style.display="block";
-    }else if (idModal == "MyPopupReq"){
-        document.getElementById("request-demo").style.display="block";
-    }else{
-        document.getElementById("modelfeed").style.display="block";
+        });
     }
 }
- //close MyPopup Modal with clear data on form
+
+function runShowModal() {
+    ShowModal('modelfeed', false)
+}
+
+//Show modal i  click
+function ShowModal(idModal, varb = false) {
+    enable = varb;
+    document.getElementById("modelfeed").style.display = "none";
+    if (idModal == "MyPopupSp") {
+        document.getElementById("modelfeed").style.display = "none";
+    } else if (idModal == "MyPopupGn") {
+        document.getElementById("modelavis").style.display = "block";
+    } else if (idModal == "MyPopupReq") {
+        document.getElementById("request-demo").style.display = "block";
+    } else {
+        document.getElementById("modelfeed").style.display = "block";
+    }
+}
+//close MyPopup Modal with clear data on form
 function CloseClearModal() {
-    enable=false;
-    document.getElementById('feedmess').style.display="none";
+    enable = false;
+    document.getElementById('feedmess').style.display = "none";
     document.getElementById("formModal").reset();
-    document.getElementById("MyPopup").style.display='none';
-    document.getElementById("modelfeed").style.display='none';
-    document.getElementById("request-demo").style.display='none'
+    document.getElementById("modelavis").style.display = 'none';
+    document.getElementById("modelfeed").style.display = 'none';
+    document.getElementById("request-demo").style.display = 'none'
 }
 
 
-function textf(x){
+function textf(x) {
     console.log(x)
-    if(x=="")
-        document.getElementById("nfmid").style.display="none";
-    else
-    {
-        document.getElementById("nfmid").style.display="block";
-        
+    if (x == "")
+        document.getElementById("nfmid").style.display = "none";
+    else {
+        document.getElementById("nfmid").style.display = "block";
+
     }
 
 }
 
-function textfmess(){
-console.log(document.getElementById("dropl").options[document.getElementById("dropl").selectedIndex].value)
-e = document.getElementById("dropl").options[document.getElementById("dropl").selectedIndex].value;
-if(e=="")
-    document.getElementById('feedmess').style.display="none";
-else
-{
-    document.getElementById('feedmess').style.display="block";
-    /*document.getElementById('feedmess').style.transition=2;*/
-     
-    if(e=="compliment")
-    document.getElementById("sutifed").innerHTML = "Thanks! What would you like to share with us?";
-    else if(e=="suggestion")
-    document.getElementById("sutifed").innerHTML = "We're all ears! What would you like to share with us?";
-    else if(e=="bug")
-    document.getElementById("sutifed").innerHTML = "Thanks for catching that. Please describe the problem to us.";
-    else
-    document.getElementById("sutifed").innerHTML = "What would you like to share with us?";
+function textfmess() {
+    console.log(document.getElementById("dropl").options[document.getElementById("dropl").selectedIndex].value)
+    e = document.getElementById("dropl").options[document.getElementById("dropl").selectedIndex].value;
+    if (e == "")
+        document.getElementById('feedmess').style.display = "none";
+    else {
+        document.getElementById('feedmess').style.display = "block";
+        /*document.getElementById('feedmess').style.transition=2;*/
 
+        if (e == "compliment")
+            document.getElementById("sutifed").innerHTML = "Thanks! What would you like to share with us?";
+        else if (e == "suggestion")
+            document.getElementById("sutifed").innerHTML = "We're all ears! What would you like to share with us?";
+        else if (e == "bug")
+            document.getElementById("sutifed").innerHTML = "Thanks for catching that. Please describe the problem to us.";
+        else
+            document.getElementById("sutifed").innerHTML = "What would you like to share with us?";
 
-
-
+    }
 }
-}
+
 window.onload = () => {
-    // On récupère tous les boutons d'ouverture de modelfeede
+    // On récupère tous les boutons d'ouverture de modelfeed
     const modelfeedButtons = document.querySelectorAll("[data-toggle=modelfeed]");
-    
-    for(let button of modelfeedButtons){
-        button.addEventListener("click", function(e){
+
+    for (let button of modelfeedButtons) {
+        button.addEventListener("click", function (e) {
             // On empêche la navigation
             e.preventDefault();
             // On récupère le data-target
             let target = this.dataset.target
-            
+
             // On récupère la bonne modelfeede
             let modelfeed = document.querySelector(target);
             // On affiche la modelfeede
@@ -110,24 +113,61 @@ window.onload = () => {
 
             // On récupère les boutons de fermeture
             const modelfeedClose = modelfeed.querySelectorAll("[data-dismiss=dialog]");
-            
-            for(let close of modelfeedClose){
+
+            for (let close of modelfeedClose) {
                 close.addEventListener("click", () => {
                     modelfeed.classList.remove("show");
                 });
             }
 
             // On gère la fermeture lors du clic sur la zone grise
-            modelfeed.addEventListener("click", function(){
+            modelfeed.addEventListener("click", function () {
                 this.classList.remove("show");
             });
             // On évite la propagation du clic d'un enfant à son parent
-            modelfeed.children[0].addEventListener("click", function(e){
+            modelfeed.children[0].addEventListener("click", function (e) {
+                e.stopPropagation();
+            })
+        });
+    }
+
+    // On récupère tous les boutons d'ouverture de modelavis
+    const modelavisButtons = document.querySelectorAll("[data-toggle=modelavis]");
+    for (let button of modelavisButtons) {
+        button.addEventListener("click", function (e) {
+            // On empêche la navigation
+            e.preventDefault();
+            // On récupère le data-target
+            let target = this.dataset.target
+
+            // On récupère la bonne modelavis
+            let modelavis = document.querySelector(target);
+            // On affiche la modelavise
+            modelavis.classList.add("show");
+
+            // On récupère les boutons de fermeture
+            const modelavisClose = modelavis.querySelectorAll("[data-dismiss=dialog]");
+
+            for (let close of modelavisClose) {
+                close.addEventListener("click", () => {
+                    modelavis.classList.remove("show");
+                });
+            }
+
+            // On gère la fermeture lors du clic sur la zone grise
+            modelavis.addEventListener("click", function () {
+                this.classList.remove("show");
+            });
+            // On évite la propagation du clic d'un enfant à son parent
+            modelavis.children[0].addEventListener("click", function (e) {
                 e.stopPropagation();
             })
         });
     }
 
 }
+
+
+
 
 
